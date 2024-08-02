@@ -1,5 +1,5 @@
 if [[ ! -e ~/.config/zsh/dependencies/zsh-async/async.zsh ]]; then
-	git clone -b 'v1.5.2' git@github.com:mafredri/zsh-async ~/.config/zsh/dependencies/zsh-async
+	git clone -b 'v1.5.2' https://github.com/mafredri/zsh-async.git ~/.config/zsh/dependencies/zsh-async
 fi
 DEPENDENCIES_DIR="$HOME/.config/zsh/dependencies"
 CONFIG_DIR="$HOME/.config/zsh/post/plugins_config"
