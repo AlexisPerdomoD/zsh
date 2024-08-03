@@ -1,4 +1,8 @@
 #!/bin/zsh
+# xset r rate 100 60 
+# if genome 
+gsettings set org.gnome.desktop.peripherals.keyboard delay 200
+gsettings set org.gnome.desktop.peripherals.keyboard repeat-interval 20
 
 BAT_THEME="DarkNeon"
 # historial de comandos en file por si acaso
@@ -44,6 +48,6 @@ if [[ $TERM = "xterm-kitty" ]]; then;
     tmux new -s $USER || tmux
 fi
 fastfetch
-print -n "HOLA BB, TERMINAL READY \n"
+print -n "HOLA MUNDO, TERMINAL READY \n"
 # fi
 # completar en la terminal
