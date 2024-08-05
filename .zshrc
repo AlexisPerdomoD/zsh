@@ -1,8 +1,8 @@
 #!/bin/zsh
 # xset r rate 100 60 
 # if genome 
-gsettings set org.gnome.desktop.peripherals.keyboard delay 200
-gsettings set org.gnome.desktop.peripherals.keyboard repeat-interval 20
+gsettings set org.gnome.desktop.peripherals.keyboard delay 100
+gsettings set org.gnome.desktop.peripherals.keyboard repeat-interval 18
 
 BAT_THEME="DarkNeon"
 # historial de comandos en file por si acaso
@@ -51,3 +51,4 @@ fastfetch
 print -n "HOLA MUNDO, TERMINAL READY \n"
 # fi
 # completar en la terminal
+
