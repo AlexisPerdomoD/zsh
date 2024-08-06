@@ -1,7 +1,7 @@
 #!/bin/zsh
 # xset r rate 100 60 
 # if genome 
-gsettings set org.gnome.desktop.peripherals.keyboard delay 100
+gsettings set org.gnome.desktop.peripherals.keyboard delay 150
 gsettings set org.gnome.desktop.peripherals.keyboard repeat-interval 18
 
 BAT_THEME="DarkNeon"
@@ -39,7 +39,7 @@ fi
 source "$HOME/.config/zsh/post/autocomplete.export.zsh"
 # lazy exports
 # plugins from diferent repos will be loaded on zsh_async.zsh, config on plugins directory
-source "$HOME/.config/zsh/post/zsh_async.zsh"
+source "$HOME/.config/zsh/post/zsh-async.zsh"
 # post/npm.export.zsh
 source "$HOME/.config/zsh/post/npm.export.zsh"
 # if ! pgrep -u $USER -x zsh >/dev/null 2>&1; then
@@ -47,6 +47,20 @@ source "$HOME/.config/zsh/post/npm.export.zsh"
 if [[ $TERM = "xterm-kitty" ]]; then;
     tmux new -s $USER || tmux
 fi
+
+# zellij
+ZELLIJ_AUTO_ATTACH=true
+# ZJ_SESSIONS=$(zellij list-sessions)
+# NO_SESSIONS=$(echo "${ZJ_SESSIONS}" | wc -l)
+#
+# if [ "${NO_SESSIONS}" -ge 2 ]; then
+#     zellij attach \
+#     "$(echo "${ZJ_SESSIONS}" | sk)"
+# else
+#    zellij attach -c
+# fi
+#
+# eval "$(zellij setup --generate-auto-start zsh)"
 fastfetch
 print -n "HOLA MUNDO, TERMINAL READY \n"
 # fi
