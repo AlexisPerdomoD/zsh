@@ -4,17 +4,19 @@ alias c="code . --profile m"
 # fzf
 # abrir archivo con nvim 
 alias vf='nvim $(fzf --preview "batcat --style=numbers --color=always {}" --preview-window=up:65%)'
-
+alias vwf='nvim $(find "${HOME}/work" -type f | fzf --preview="batcat --style=numbers --color=always {}" --preview-window=up:65%)'
 # abrir archivo en vim siempre desde home 
 alias vfG='nvim $(find "$HOME" -type f | fzf --preview="batcat --style=numbers --color=always {}" --preview-window=up:65%)'
 # mostrar historial de comandos y selecionar uno y escribirlo en la terminal
 
 # abrir directorio con nvim 
 alias vd='cd $(find . -type d | fzf -e) && nvim .'
+alias vwd='cd $(find "$HOME/work" -type d | fzf -e) && nvim .'
 alias vdG='cd $(find "$HOME" -type d | fzf -e) && nvim .'
 
 # go directory 
 alias gd='cd $(find . -type d | fzf -e)'
+alias gwd='cd $(find "$HOME/work" -type d | fzf -e)'
 alias gdG='cd $(find "$HOME" -type d | fzf -e)'
 
 # remove a file 
@@ -35,6 +37,6 @@ alias al='ls -lhF --color=auto --block-size=K --group-directories-first'
 alias L='ls -ChF  --color=auto --block-size=K --group-directories-first'
 # Alias mejorado para 'du' con profundidad máxima de 1
 alias du='du -h --max-depth=1'
-
+# docker
 alias dockerpostgres='docker run --rm --name base -e POSTGRES_PASSWORD=password -d -p 5432:5432 postgres'
 alias pgbase='psql -h localhost -p 5432 -U postgres -d base'
