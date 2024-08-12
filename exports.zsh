@@ -13,3 +13,7 @@ export PATH=$HOME/.local/share/nvim/mason/bin:$PATH
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 # fzf integration 
 eval "$(fzf --zsh)"
+# rust 
+source $HOME/.cargo/env
+fpath+=${ZDOTDIR:-~}/.zsh_functions
+
