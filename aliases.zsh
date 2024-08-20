@@ -39,4 +39,4 @@ alias L='ls -ChF  --color=auto --block-size=K --group-directories-first'
 alias du='du -h --max-depth=1'
 # docker
 alias dockerpostgres='docker run --rm --name base -e POSTGRES_PASSWORD=password -d -p 5432:5432 postgres'
-alias pgbase='psql -h localhost -p 5432 -U postgres -d base'
+alias pgbase='docker exec -it base psql -h localhost -p 5432 -U postgres -d base'
