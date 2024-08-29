@@ -44,9 +44,9 @@ source "$HOME/.config/zsh/post/zsh-async.zsh"
 source "$HOME/.config/zsh/post/npm.export.zsh"
 # if ! pgrep -u $USER -x zsh >/dev/null 2>&1; then
 # tmux 
-if [[ $TERM = "xterm-kitty" ]]; then;
-    tmux new -s $USER || tmux
-fi
+# if [[ $TERM = "xterm-kitty" ]]; then;
+#     tmux new -s $USER || tmux
+# fi
 
 # zellij
 ZELLIJ_AUTO_ATTACH=true
@@ -62,7 +62,7 @@ ZELLIJ_AUTO_ATTACH=true
 #
 # eval "$(zellij setup --generate-auto-start zsh)"
 fastfetch
-print -n "HOLA MUNDO, TERMINAL READY \n"
+print -n "HOLA MUNDO, TERMINAL READY \nUSUARIO: $USER"
 # fi
 # completar en la terminal
 
