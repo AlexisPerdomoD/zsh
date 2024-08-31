@@ -1,6 +1,7 @@
 # open editors on directories 
 alias v="nvim ."
 alias c="code . --profile m"
+alias z='zellij a'
 # fzf
 # abrir archivo con nvim 
 alias vf='nvim $(fzf --preview "batcat --style=numbers --color=always {}" --preview-window=up:65%)'
@@ -35,6 +36,8 @@ alias al='ls -lhF --color=auto --block-size=K --group-directories-first'
 alias L='ls -ChF  --color=auto --block-size=K --group-directories-first'
 # Alias mejorado para 'du' con profundidad máxima de 1
 alias du='du -h --max-depth=1'
+# limpiar cache 
+alias limpia-cache-en-ram='sudo sync; echo 3 | sudo tee /proc/sys/vm/drop_caches'
 
 alias dockerpostgres='docker run --rm --name base -e POSTGRES_PASSWORD=password -d -p 5432:5432 postgres'
 alias pgbase='docker exec -it base psql -h localhost -p 5432 -U postgres -d base'
