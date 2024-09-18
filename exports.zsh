@@ -10,10 +10,10 @@ export LUA_PATH=$HOME/.config/wezterm/wezterm.lua:$LUA_PATH
 # neovim
 export PATH=$HOME/.local/share/nvim/mason/bin:$PATH
 # brew
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+# eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 # fzf integration 
 eval "$(fzf --zsh)"
 # rust 
-source $HOME/.cargo/env
+# source $HOME/.cargo/env
 fpath+=${ZDOTDIR:-~}/.zsh_functions
 
