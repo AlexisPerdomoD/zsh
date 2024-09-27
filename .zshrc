@@ -65,4 +65,5 @@ fastfetch
 print -n "HOLA MUNDO, TERMINAL READY \nUSUARIO: $USER"
 # fi
 # completar en la terminal
+export TERMINAL="alacritty"
 

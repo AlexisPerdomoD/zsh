@@ -4,10 +4,10 @@ alias c="code . --profile m"
 alias z='zellij a'
 # fzf
 # abrir archivo con nvim 
-alias vf='nvim $(fzf --preview "batcat --style=numbers --color=always {}" --preview-window=up:65%)'
-alias vwf='nvim $(find "${HOME}/work" -type f | fzf --preview="batcat --style=numbers --color=always {}" --preview-window=up:65%)'
+alias vf='nvim $(fzf --preview "bat --style=numbers --color=always {}" --preview-window=up:65%)'
+alias vwf='nvim $(find "${HOME}/work" -type f | fzf --preview="bat --style=numbers --color=always {}" --preview-window=up:65%)'
 # abrir archivo en vim siempre desde home 
-alias vfG='nvim $(find "$HOME" -type f | fzf --preview="batcat --style=numbers --color=always {}" --preview-window=up:65%)'
+alias vfG='nvim $(find "$HOME" -type f | fzf --preview="bat --style=numbers --color=always {}" --preview-window=up:65%)'
 # mostrar historial de comandos y selecionar uno y escribirlo en la terminal
 
 # abrir directorio con nvim 
@@ -21,16 +21,16 @@ alias gwd='cd $(find "$HOME/work" -type d | fzf -e)'
 alias gdG='cd $(find "$HOME" -type d | fzf -e)'
 
 # remove a file 
-alias rfile='rm -i $(find . -type f | fzf --preview="batcat --style=numbers --color=always {}" --preview-window=up:75%)'
+alias rfile='rm -i $(find . -type f | fzf --preview="bat --style=numbers --color=always {}" --preview-window=up:75%)'
 
 # copiar ruta a clipboard 
 alias fcp='fzf | xargs -I {} echo -n $(realpath {}) | xclip -selection clipboard'
 
 # copiar archivo en directorio actual desde cualquier directorio hijo 
-alias copyme='cp $(fzf --preview="batcat --style=numbers --color=always {}" --preview-window=up:50%) .'
-alias moveme='mv $(fzf --preview="batcat --style=numbers --color=always {}" --preview-window=up:50%) .'
-alias copymeG='cp $(find "$HOME" -type f | fzf --preview="batcat --style=numbers --color=always {}" --preview-window=up:75%) .'
-alias movemeG='mv $(find "$HOME" -type f | fzf --preview="batcat --style=numbers --color=always {}" --preview-window=up:75%) .'
+alias copyme='cp $(fzf --preview="bat --style=numbers --color=always {}" --preview-window=up:50%) .'
+alias moveme='mv $(fzf --preview="bat --style=numbers --color=always {}" --preview-window=up:50%) .'
+alias copymeG='cp $(find "$HOME" -type f | fzf --preview="bat --style=numbers --color=always {}" --preview-window=up:75%) .'
+alias movemeG='mv $(find "$HOME" -type f | fzf --preview="bat --style=numbers --color=always {}" --preview-window=up:75%) .'
 alias killl='kill -9 **'
 #listado directorios visualmente mas comodos 
 alias la='ls -lAhF --color=auto --block-size=K --group-directories-first'
