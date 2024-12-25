@@ -1,8 +1,5 @@
 #!/bin/zsh
 # xset r rate 100 60 
-# if genome 
-gsettings set org.gnome.desktop.peripherals.keyboard delay 150
-gsettings set org.gnome.desktop.peripherals.keyboard repeat-interval 18
 
 BAT_THEME="DarkNeon"
 # historial de comandos en file por si acaso
@@ -66,4 +63,6 @@ print -n "HOLA MUNDO, TERMINAL READY \nUSUARIO: $USER"
 # fi
 # completar en la terminal
 export TERMINAL="alacritty"
+export QT_QPA_PLATFORMTHEME=qt5ct
+export QT_QPA_PLATFORM=wayland
 
