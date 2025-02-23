@@ -11,6 +11,7 @@ export LUA_PATH=$HOME/.config/wezterm/wezterm.lua:$LUA_PATH
 export PATH=$HOME/.local/share/nvim/mason/bin:$PATH
 # dotnet
 export PATH="$PATH:/usr/share/dotnet"
+export PATH="$HOME/.dotnet/tools:$PATH"
 # Required setup for dotnet
 # dotnet --list-runtimes
 # Microsoft.AspNetCore.App 8.0.8 [/usr/share/dotnet/shared/Microsoft.AspNetCore.App]
