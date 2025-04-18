@@ -45,3 +45,10 @@ alias limpia-cache-en-ram='sudo sync; echo 3 | sudo tee /proc/sys/vm/drop_caches
 # docker
 alias dockerpostgres='docker run --rm --name base -e POSTGRES_PASSWORD=password -d -p 5432:5432 postgres'
 alias pgbase='docker exec -it base psql -h localhost -p 5432 -U postgres -d base'
+
+alias dockercroach='docker run --rm --name crdb -d \
+  -e COCKROACH_USER=root \
+  -e COCKROACH_PASSWORD=yourpassword \
+  -p 26257:26257 -p 8080:8080 \
+  cockroachdb/cockroach:v24.1.0 start-single-node --insecure'
+alias crbase='docker exec -it crdb ./cockroach sql --insecure --host=localhost:26257'
