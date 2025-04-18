@@ -42,27 +42,8 @@ source "$HOME/.config/zsh/post/autocomplete.export.zsh"
 source "$HOME/.config/zsh/post/zsh-async.zsh"
 # post/npm.export.zsh
 source "$HOME/.config/zsh/post/npm.export.zsh"
-# if ! pgrep -u $USER -x zsh >/dev/null 2>&1; then
-# tmux 
-# if [[ $TERM = "xterm-kitty" ]]; then;
-#     tmux new -s $USER || tmux
-# fi
 
-# zellij
 ZELLIJ_AUTO_ATTACH=true
-# ZJ_SESSIONS=$(zellij list-sessions)
-# NO_SESSIONS=$(echo "${ZJ_SESSIONS}" | wc -l)
-#
-# if [ "${NO_SESSIONS}" -ge 2 ]; then
-#     zellij attach \
-#     "$(echo "${ZJ_SESSIONS}" | sk)"
-# else
-#    zellij attach -c
-# fi
-#
-# eval "$(zellij setup --generate-auto-start zsh)"
 fastfetch
 print -n "HOLA MUNDO, TERMINAL READY \nUSUARIO: $USER"
-# fi
-# completar en la terminal
 
