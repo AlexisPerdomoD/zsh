@@ -1,8 +1,5 @@
 #!/bin/zsh
-# xset r rate 100 60 
-# if genome 
-gsettings set org.gnome.desktop.peripherals.keyboard delay 150
-gsettings set org.gnome.desktop.peripherals.keyboard repeat-interval 18
+# xset r rate 100 60
 
 BAT_THEME="DarkNeon"
 # historial de comandos en file por si acaso
@@ -18,23 +15,14 @@ setopt hist_save_no_dups
 setopt hist_ignore_dups
 setopt hist_find_no_dups
 # source
-##  principal bins
-if [ -f "$HOME/.config/zsh/exports.zsh" ]; then
-	source "$HOME/.config/zsh/exports.zsh"
-	#prompt theme
-	source "$HOME/.config/zsh/prompts/starship.zsh"
-fi
+source "$HOME/.config/zsh/exports.zsh"
+source "$HOME/.config/zsh/prompts/starship.zsh"
 # colors
 source "$HOME/.config/zsh/colors.zsh"
 # aliases
-if [ -f "$HOME/.config/zsh/aliases.zsh" ]; then
-	source "$HOME/.config/zsh/aliases.zsh"
-fi
+source "$HOME/.config/zsh/aliases.zsh"
 # functions
-if [ -f "$HOME/.config/zsh/functions.zsh" ]; then
-	source "$HOME/.config/zsh/functions.zsh"
-fi
-
+source "$HOME/.config/zsh/functions.zsh"
 # native autocompletado
 source "$HOME/.config/zsh/post/autocomplete.export.zsh"
 # lazy exports
@@ -46,4 +34,3 @@ source "$HOME/.config/zsh/post/npm.export.zsh"
 ZELLIJ_AUTO_ATTACH=true
 fastfetch
 print -n "HOLA MUNDO, TERMINAL READY \nUSUARIO: $USER"
-
