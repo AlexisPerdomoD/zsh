@@ -1,83 +1,143 @@
 #!/bin/zsh
-# xset r rate 100 60
 
+#==============================================================================
+# ENVIRONMENT VARIABLES
+#==============================================================================
+# Theme setting for bat command (syntax highlighting)
 BAT_THEME="DarkNeon"
-# historial de comandos en file por si acaso
+# History file configuration
 HISTFILE=~/.zsh_history
 HISTSIZE=3000
 SAVEHIST=$HISTSIZE
 HISTDUP=erase
-DEPENDENCIES_DIR="~/.config/zsh/dependencies"
+# Directory for storing zsh plugin dependencies
+DEPENDENCIES_DIR="$HOME/.config/zsh/dependencies"
+
+#==============================================================================
+# HISTORY OPTIONS
+#==============================================================================
+# Append history entries
 setopt appendhistory
+# Share history across multiple zsh sessions
 setopt sharehistory
+# Don't record commands that start with space
 setopt hist_ignore_space
+# Remove duplicates first when HISTFILE size exceeds HISTSIZE
 setopt hist_ignore_all_dups
+# Don't save duplicates
 setopt hist_save_no_dups
+# Ignore duplicates when searching
 setopt hist_ignore_dups
+# When searching history don't display duplicates
 setopt hist_find_no_dups
-# prompt
-SPACESHIP_PROMPT_ASYNC=true
-eval "$(starship init zsh)"
-# colors
-autoload -U colors && colors
-zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
-# aliases
-source "$HOME/.config/zsh/aliases.zsh"
-# functions
 
-
-# Habilitar autocompletado
+#==============================================================================
+# COMPLETION SYSTEM CONFIGURATION
+#==============================================================================
+# Initialize the completion system
 autoload -Uz compinit
 compinit
 
+# Basic completion configuration
 zstyle ':completion:*' menu select
-
-# Mostrar una lista de coincidencias posibles automáticamente
 zstyle ':completion:*' auto-list true
-
-# Intentar autocompletar con la opción más probable si no hay coincidencias exactas
 zstyle ':completion:*' completer _complete _ignored _approximate
-
-# Mostrar descripciones de opciones y argumentos
 zstyle ':completion:*' format '%B%d%b'
-
-# Aceptar autocompletado parcial en medio de una palabra
 zstyle ':completion:*' accept-exact true
-
-# Caso insensible al autocompletar
+# Case-insensitive completion
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
-# Activar la terminación de comandos y parámetros de shell con tab
+# Key bindings and additional completion settings
 bindkey '^I' expand-or-complete
-
-# Activar autocompletado por globbing (comodines)
 setopt complete_in_word
-
-# Habilitar corrección ortográfica
 setopt correct
 
-# Configuración de ignorar errores ortográficos comunes
+# Advanced completion settings
 zstyle ':completion:*' completer _complete _correct _approximate
-
-# Permitir mostrar coincidencias ambiguas
 setopt menucomplete
 
-# Configuración de colores para el menú de autocompletado
+# Completion menu styling
 zstyle ':completion:*:descriptions' format '%B%d%b'
 zstyle ':completion:*:messages' format '%B%d%b'
 zstyle ':completion:*:warnings' format '%B%d%b'
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
+autoload -U colors && colors
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
-source  "$DEPENDENCIES_DIR/zsh-autosuggestions/zsh-autosuggestions.zsh"
+#==============================================================================
+# PROMPT CONFIGURATION
+#==============================================================================
+SPACESHIP_PROMPT_ASYNC=true
+eval "$(starship init zsh)"
 
+#==============================================================================
+# ALIASES - EDITOR AND NAVIGATION
+#==============================================================================
+# Quick editor access
+alias v="nvim ."
+alias c="code . --profile m"
+alias z='zellij a'
 
+# Fuzzy find with neovim integration
+alias vf='nvim $(fzf --preview "batcat --style=numbers --color=always {}" --preview-window=up:65%)'
+alias vwf='nvim $(find "${HOME}/work" -type f | fzf --preview="batcat --style=numbers --color=always {}" --preview-window=up:65%)'
+alias vfG='nvim $(find "$HOME" -type f | fzf --preview="batcat --style=numbers --color=always {}" --preview-window=up:65%)'
 
+# Directory navigation with neovim
+alias vd='cd $(find . -type d | fzf -e) && nvim .'
+alias vwd='cd $(find "$HOME/work" -type d | fzf -e) && nvim .'
+alias vdG='cd $(find "$HOME" -type d | fzf -e) && nvim .'
 
+# Quick directory navigation
+alias gd='cd $(find . -type d | fzf -e)'
+alias gwd='cd $(find "$HOME/work" -type d | fzf -e)'
+alias gdG='cd $(find "$HOME" -type d | fzf -e)'
 
+#==============================================================================
+# ALIASES - FILE OPERATIONS
+#==============================================================================
+# Interactive file management
+alias rfile='rm -i $(find . -type f | fzf --preview="batcat --style=numbers --color=always {}" --preview-window=up:75%)'
+alias fcp='fzf | xargs -I {} echo -n $(realpath {}) | xclip -selection clipboard'
 
+# System operations
+alias limpia-cache-en-ram='sudo sync; echo 3 | sudo tee /proc/sys/vm/drop_caches'
 
-################### START ############################
+# Enhanced listing commands
+alias la='ls -lAhF --color=auto --block-size=K --group-directories-first'
+alias al='ls -lhF --color=auto --block-size=K --group-directories-first'
+alias L='ls -ChF  --color=auto --block-size=K --group-directories-first'
+alias du='du -h --max-depth=1'
+
+#==============================================================================
+# FZF (FUZZY FINDER) CONFIGURATION
+#==============================================================================
+load_fzf() {
+    command -v fzf >/dev/null 2>&1 || return 1
+    
+    local fzf_completion="/usr/share/fzf/completion.zsh"
+    [[ -f "$fzf_completion" ]] && source "$fzf_completion"
+    
+    local fzf_keybindings="/usr/share/fzf/key-bindings.zsh"
+    [[ -f "$fzf_keybindings" ]] && source "$fzf_keybindings"
+}
+load_fzf
+
+#==============================================================================
+# PLUGINS AND DEPENDENCIES
+#==============================================================================
+# Auto-install zsh-autosuggestions if not present
+if [[ ! -e ~/.config/zsh/dependencies/zsh-autosuggestions/zsh-autosuggestions.zsh ]]; then
+    git clone  https://github.com/zsh-users/zsh-autosuggestions $DEPENDENCIES_DIR/zsh-autosuggestions
+fi
+source ~/.config/zsh/dependencies/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+#==============================================================================
+# STARTUP CONFIGURATION
+#==============================================================================
 ZELLIJ_AUTO_ATTACH=true
 fastfetch
-print -n "HOLA MUNDO, TERMINAL READY \nUSUARIO: $USER"
+echo "HOLA MUNDO, TERMINAL READY"
+echo "USR: $USER"
+
