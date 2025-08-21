@@ -132,7 +132,8 @@ if [[ ! -e ~/.config/zsh/dependencies/zsh-autosuggestions/zsh-autosuggestions.zs
     git clone  https://github.com/zsh-users/zsh-autosuggestions $DEPENDENCIES_DIR/zsh-autosuggestions
 fi
 source ~/.config/zsh/dependencies/zsh-autosuggestions/zsh-autosuggestions.zsh
-
+# Load fnm 
+eval "$(fnm env --use-on-cd --shell zsh)"
 #==============================================================================
 # STARTUP CONFIGURATION
 #==============================================================================
