@@ -134,7 +134,16 @@ if [[ ! -e ~/.config/zsh/dependencies/zsh-autosuggestions/zsh-autosuggestions.zs
 fi
 source ~/.config/zsh/dependencies/zsh-autosuggestions/zsh-autosuggestions.zsh
 # Load fnm 
-eval "$(fnm env --use-on-cd --shell zsh)"
+
+FNM_PATH="/home/six66/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="$FNM_PATH:$PATH"
+  eval "`fnm env --use-on-cd --shell zsh`"
+  # eval "`fnm env `"
+fi
+# if command -v fnm > /dev/null 2>&1; then
+#     eval "$(fnm env --use-on-cd --shell zsh)"
+# fi
 #==============================================================================
 # STARTUP CONFIGURATION
 #==============================================================================
