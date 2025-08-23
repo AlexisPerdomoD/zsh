@@ -78,7 +78,8 @@ eval "$(starship init zsh)"
 alias v="nvim ."
 alias c="code . --profile m"
 alias z='zellij a'
-
+# Git 
+alias gb="git switch \$(git branch | fzf)"
 # Fuzzy find with neovim integration
 alias vf='nvim $(fzf --preview "batcat --style=numbers --color=always {}" --preview-window=up:65%)'
 alias vwf='nvim $(find "${HOME}/work" -type f | fzf --preview="batcat --style=numbers --color=always {}" --preview-window=up:65%)'
